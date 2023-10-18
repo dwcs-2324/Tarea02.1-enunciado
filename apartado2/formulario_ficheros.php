@@ -9,9 +9,10 @@ foreach ($_FILES as $input => $infoArr) { //$input será el valor de name en el 
 	if (is_array($infoArr["name"])) { //Si se envía un array de ficheros con el valor de name  en <input type="file"> terminado en []
 		//Se recibe un array asociativo con claves "name", "type", "tmp_name", "error" y "size" y por cada clave, un array de índices numéricos con los valores de cada fichero por cada clave
 		
-		mostrar_datos_fichero($infoArr);
+		mostrar_ol_ficheros($infoArr);
 
-		//mover ficheros
+		//mover ficheros a una subcarpeta del directorio actual
+		
 		
 		
 	} else { //Si se envía un único fichero (El valor del atributo name en <input type="file"> no termina con [])
@@ -23,12 +24,12 @@ foreach ($_FILES as $input => $infoArr) { //$input será el valor de name en el 
 
 
 /**
- * mostrar_datos_fichero
- *
- * @param  mixed $infoArr
+ * mostrar_ol_ficheros
+ * Crea marcado HTML para generar una lista ordenada con todos los datos que provee PHP en $_FILES para cada fichero enviado al servidor
+ * @param  mixed $infoArr Array asociativo con las claves "name", "type", "tmp_name", "error", "full_path" y "size. 
  * @return void
  */
-function mostrar_datos_fichero(array $infoArr): void
+function mostrar_ol_ficheros(array $infoArr): void
 {
 
 	
